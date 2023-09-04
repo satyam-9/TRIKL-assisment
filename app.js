@@ -25,7 +25,7 @@ const options = {
 };
 
 const specs = swaggerJsdoc(options);
-app.use("/", swaggerUi.serve, swaggerUi.setup(specs));
+app.use("/doc", swaggerUi.serve, swaggerUi.setup(specs));
 
 
 //swagger doc end-----------------
