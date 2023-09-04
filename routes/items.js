@@ -2,11 +2,18 @@ const express = require("express");
 const router = express.Router();
 const Item = require("../models/item");
 
-router.get('/', async(req, res)=>{
-    res.send("hii")
-})
+router.get("/", async (req, res) => {
+    try {
+        const items = await Item.find();
+        if (!items) return res.status(404).json({ error: "no item found." });
 
-// GET all items 
+        res.json(items);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// GET all items
 /**
  * @swagger
  * /items:
@@ -31,8 +38,7 @@ router.get('/', async(req, res)=>{
 router.get("/items", async (req, res) => {
     try {
         const items = await Item.find();
-        if(!items)
-            return res.status(404).json({ error: "Item not found." });
+        if (!items) return res.status(404).json({ error: "Item not found." });
 
         res.json(items);
     } catch (error) {
@@ -142,7 +148,6 @@ router.put("/items/:id", async (req, res) => {
     }
 });
 
-
 // DELETE an item by ID
 /**
  * @swagger
@@ -165,11 +170,11 @@ router.put("/items/:id", async (req, res) => {
  *       400:
  *         description: Bad request. An error occurred. Error message in the response body.
  */
-router.delete("/items/:id", async(req, res)=>{
+router.delete("/items/:id", async (req, res) => {
     try {
         const Id = req.params.id;
-        const item = await Item.findByIdAndRemove(Id);  
-        
+        const item = await Item.findByIdAndRemove(Id);
+
         if (!item) {
             return res.status(404).json({ error: "Item not found." });
         }
@@ -178,6 +183,6 @@ router.delete("/items/:id", async(req, res)=>{
     } catch (error) {
         res.status(400).json({ error: "An error occurred." });
     }
-})
+});
 
 module.exports = router;
