@@ -1,6 +1,9 @@
-# Your Project Name
+# Assignment for Full Stack Internship - TRIKL
 
-Brief description of your project.
+APIs to manage product.
+implemented RESTful APIs for CRUD operations.
+For the database MongoDB is used
+For API documentation Swagger is used
 
 ## Prerequisites
 
@@ -16,16 +19,23 @@ Before you begin, ensure you have met the following requirements:
 To get a local copy up and running, follow these steps:
 
 1. Clone the repository:
-
-   git clone https://github.com/satyam-9/TRIKL-assisment.git
+```
+ git clone https://github.com/satyam-9/TRIKL-assisment.git
+```
+  
+   
 
 2. Change to the project directory:
 
-    cd your-repo
+   ``` 
+   cd your-repo
+   ```
 
 3. Install project dependencies:
 
+    ```
     npm install
+    ```
 
 4. Create a .env file in the project root and configure your MongoDB connection URI:
 
@@ -33,8 +43,9 @@ To get a local copy up and running, follow these steps:
 
 5. Start the Node.js server:
 
-    npm start
-
+```    
+npm start
+```
 The server will start running on 'http://localhost:3000'
 
 # Usage
