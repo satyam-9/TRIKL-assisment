@@ -2,15 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Item = require("../models/item");
 
-router.get("/", async (req, res) => {
-    try {
-        const items = await Item.find();
-        if (!items) return res.status(404).json({ error: "no item found." });
-
-        res.json(items);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
+router.get("/", (req, res) => {
+    res.redirect("/api-docs"); // Redirect to the Swagger documentation
 });
 
 // GET all items
